@@ -1,6 +1,5 @@
 import requests
 from decouple import config
-import constants.defs as defs 
 
 class OandaApi:
 
