@@ -1,12 +1,14 @@
 from api.oanda_api import OandaApi
 from infratstructure.instrument_collection import instrumentCollection
+from simulation.ma_cross import run_ma_sim
 if __name__ == "__main__":
-    oanda_api = OandaApi()
+    # oanda_api = OandaApi()
 
-    instrumentCollection.create_file(oanda_api.get_account_instruments(), "./data")
+    # instrumentCollection.create_file(oanda_api.get_account_instruments(), "./data")
 
-    data = oanda_api.get_account_summary()
+    # data = oanda_api.get_account_summary()
     #[print(x["name"]) for x in data] 
     #print(data)
     #instrumentCollection.load_instruments("./data")
     #instrumentCollection.print_instruments()
+    run_ma_sim()
