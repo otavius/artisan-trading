@@ -11,7 +11,12 @@ requests = "^2.32.3"
 pandas = "^2.2.3"
 python-decouple = "^3.8"
 plotly = "^6.1.2"
+nbformat = "^5.10.4"
+xlsxwriter = "^3.2.3"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
 
 [build-system]
 requires = ["poetry-core"]
