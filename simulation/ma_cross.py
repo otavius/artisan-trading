@@ -50,8 +50,8 @@ def load_price_data(pair, granularity, ma_list):
     df.reset_index(drop=True, inplace=True)
     return df 
 
-def get_trades(df_analyis, pair, granularity):
-    df_trades = df_analyis[df_analyis.TRADE != NONE].copy()
+def get_trades(df_analysis, pair, granularity):
+    df_trades = df_analysis[df_analysis.TRADE != NONE].copy()
     df_trades["DIFF"] = df_trades.mid_c.diff().shift(-1)
     df_trades.fillna(0, inplace=True)
     df_trades["GAIN"] = df_trades.DIFF / pair.pipLocation
@@ -118,7 +118,18 @@ def analyse_pair(instrument, granularity, ma_long, ma_short, filepath):
 
     for ma_l in ma_long:
         for ma_s in ma_short:
-            if ma_l <= ma_s:
+            if ma_l > ma_s:
+                # Only process when long MA is greater than short MA
+                ma_result = assess_pair(
+                    price_data,
+                    get_ma_col(ma_l),
+                    get_ma_col(ma_s),
+                    instrument,
+                    granularity
+                )
+                print(ma_result)
+                result_list.append(ma_result)
+            else:
                 continue
 
             ma_result = assess_pair(
