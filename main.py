@@ -17,10 +17,11 @@ if __name__ == "__main__":
 
     # instrumentCollection.create_file(oanda_api.get_account_instruments(), "./data")
 
-    # data = oanda_api.get_account_summary()
+    data = oanda_api.get_account_summary()
+    instrum = oanda_api.get_account_instruments()
     #[print(x["name"]) for x in data] 
-    #print(data)
+    print(data)
     #instrumentCollection.load_instruments("./data")
     #instrumentCollection.print_instruments()
-    run_ma_sim()
+    #run_ma_sim()
     #run_collection(instrumentCollection, oanda_api)
