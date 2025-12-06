@@ -10,7 +10,7 @@ class OandaApi:
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
-            "Authorization": f"Bearer {config("API_KEY")}",
+            "Authorization": f"Bearer {config("OANDA_API_KEY")}",
             "Content-Type": "application/json"
         })
 
@@ -24,6 +24,11 @@ class OandaApi:
             if response == None:
                 return False, {"error": "verb not found"}
             
+            try:
+                json_data = response.json()
+            except ValueError:
+                json_data = {"raw": response.text}
+            
             if response.status_code == code:
                 return True, response.json()
             else:
@@ -32,7 +37,7 @@ class OandaApi:
         except Exception as error:
              return False, {"Exception": error}
         
-    def get_accont_endpoint(self, ep, data_key):
+    def get_account_endpoint(self, ep, data_key):
         url = f"accounts/{config("ACCOUNT_ID")}/{ep}"
         ok, data = self.make_request(url)
         if ok == True and data_key in data:
@@ -42,10 +47,10 @@ class OandaApi:
             return None 
     
     def get_account_summary(self):
-        return self.get_accont_endpoint("summary", "account")
+        return self.get_account_endpoint("summary", "account")
     
     def get_account_instruments(self):
-        return self.get_accont_endpoint("instruments", "instruments")
+        return self.get_account_endpoint("instruments", "instruments")
     
     def fetch_candles(self, pair_name, count=10, granularity="H1", price="MBA", date_f=None, date_t=None):
         url = f"instruments/{pair_name}/candles"
