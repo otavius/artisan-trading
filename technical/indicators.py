@@ -27,7 +27,7 @@ def keltner_channels(df: pd.DataFrame, n_ema=20, n_atr=10):
     df.drop(c_atr, axis=1, inplace=True)
     return df
 
-def rsi(df: pd.DataFrame, n=14):
+def RSI(df: pd.DataFrame, n=14):
     alpha = 1.0 / n
     gains = df.mid_c.diff()
 
@@ -41,7 +41,7 @@ def rsi(df: pd.DataFrame, n=14):
     df[f"RSI_{n}"] = 100.0 - (100.0 / (1.0 + rs))
     return df 
 
-def macd(df: pd.DataFrame, n_slow=26, n_fast=12, n_signal=9):
+def MACD(df: pd.DataFrame, n_slow=26, n_fast=12, n_signal=9):
     ema_long = df.mid_c.ewm(min_periods=n_slow, span=n_slow).mean()
     ema_short = df.mid_c.ewm(min_periods=n_fast, span=n_fast).mean()
 
