@@ -3,7 +3,7 @@ from infrastructure.instrument_collection import instrumentCollection
 from simulation.ma_cross import run_ma_sim
 from dateutil import parser
 from infrastructure.collect_data import run_collection
-
+from simulation.ema_macd_mp import run_ema_macd
 if __name__ == "__main__":
     oanda_api = OandaApi()
 
@@ -17,11 +17,13 @@ if __name__ == "__main__":
 
     # instrumentCollection.create_file(oanda_api.get_account_instruments(), "./data")
 
-    data = oanda_api.get_account_summary()
-    instrum = oanda_api.get_account_instruments()
+    # data = oanda_api.get_account_summary()
+    # instrum = oanda_api.get_account_instruments()
     #[print(x["name"]) for x in data] 
-    print(data)
-    #instrumentCollection.load_instruments("./data")
+    #print(data)
+    instrumentCollection.load_instruments("./data")
     #instrumentCollection.print_instruments()
     #run_ma_sim()
     #run_collection(instrumentCollection, oanda_api)
+    #run_ema_macd(instrumentCollection)
+    run_ema_macd(instrumentCollection)
