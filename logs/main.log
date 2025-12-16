@@ -1,1 +1,7 @@
-2025-12-15 19:58:45 Log wrapper init() ./logs/main.log
+2025-12-16 18:42:23 Log wrapper init() ./logs/main.log
+2025-12-16 18:42:23 Bot started with Trade Settings:
+{'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
+{'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
+
+
+2025-12-16 18:42:23 Bot started

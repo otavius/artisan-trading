@@ -1,0 +1,2 @@
+2025-12-16 18:42:23 Log wrapper init() ./logs/GBP_CHF.log
+2025-12-16 18:42:23 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
