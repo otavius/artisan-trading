@@ -4,7 +4,8 @@ import pandas as pd
 import json  
 from dateutil import parser 
 from datetime import datetime as dt 
-from infrastructure.instrument_collection import instrumentCollection as ic 
+from infrastructure.instrument_collection import instrumentCollection as ic
+from models.open_trade import OpenTrade 
 
 
 
@@ -30,6 +31,10 @@ class OandaApi:
             if verb == "post":
                 response = self.session.post(full_url, params=params, data=data, headers=headers)
             
+            if verb == "put":
+                response = self.session.put(full_url, params=params, data=data, headers=headers)
+            
+
             if response == None:
                 return False, {"error": "verb not found"}
             
@@ -143,7 +148,39 @@ class OandaApi:
             take_profit_dict = dict(price=str(round(take_profit, instrument.displayPrecision)))
             data["order"]["takeProfitOnFill"] = take_profit_dict
 
-        print(data)
+        #print(data)
 
         ok, response = self.make_request(url,verb="post", data=data, code=201)
-        print(ok, response)
+        #print(ok, response)
+
+        if ok == True and "orderFillTransaction" in response:
+            return response["orderFillTransaction"]["id"]
+        else:
+            return None
+        
+    def close_trade(self, trade_id):
+        url = f"accounts/{config("ACCOUNT_ID")}/trades/{trade_id}/close"
+        ok, _ = self.make_request(url, verb="put", code=200)
+
+        if ok == True:
+            print("Closed {trade_id} successfully")
+        else:
+            print("Failed to close {trade_id}")
+
+        return ok 
+    
+    def get_open_trade(self, trade_id: int):
+        url = f"accounts/{config("ACCOUNT_ID")}/trades/{trade_id}"
+        ok, response = self.make_request(url)
+
+        if ok == True and "trade" in response:
+            return OpenTrade(response["trade"])
+        
+    def get_open_trades(self):
+        url = f"accounts/{config("ACCOUNT_ID")}/openTrades"
+        ok, response = self.make_request(url)
+
+        if ok == True and "trades" in response:
+            return [OpenTrade(x) for x in response["trades"]]
+        else: 
+            print("you have no open trades at the moment")
