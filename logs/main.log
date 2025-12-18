@@ -1,8 +1,11 @@
-2025-12-17 04:42:28 Log wrapper init() ./logs/main.log
-2025-12-17 04:42:28 Bot started with Trade Settings:
+2025-12-17 20:01:58 Log wrapper init() ./logs/main.log
+2025-12-17 20:01:58 Bot started with Trade Settings:
 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.04, 'mingain': 0.14, 'riskreward': 1.5}
 
 
-2025-12-17 04:42:29 Bot started
+2025-12-17 20:01:59 Bot started
+2025-12-17 20:02:09 process_candles triggered: ['GBP_CHF', 'EUR_CHF', 'GBP_JPY']
+2025-12-17 20:03:01 process_candles triggered: ['GBP_CHF', 'EUR_CHF', 'GBP_JPY']
+2025-12-17 20:04:03 process_candles triggered: ['GBP_CHF', 'EUR_CHF', 'GBP_JPY']

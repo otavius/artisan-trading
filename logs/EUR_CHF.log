@@ -1,3 +1,6 @@
-2025-12-17 04:42:28 Log wrapper init() ./logs/EUR_CHF.log
-2025-12-17 04:42:28 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
-2025-12-17 04:42:29 CandleManager() init last_candle:last_candle: 25-12-17 09:35 is_ready:False
+2025-12-17 20:01:58 Log wrapper init() ./logs/EUR_CHF.log
+2025-12-17 20:01:58 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
+2025-12-17 20:01:59 CandleManager() init last_candle:last_candle: 25-12-18 01:00 is_ready:False
+2025-12-17 20:02:09 CandleManager() new candle: last_candle: 25-12-18 01:01 is_ready:True
+2025-12-17 20:03:01 CandleManager() new candle: last_candle: 25-12-18 01:02 is_ready:True
+2025-12-17 20:04:03 CandleManager() new candle: last_candle: 25-12-18 01:03 is_ready:True
