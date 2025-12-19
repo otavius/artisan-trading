@@ -1,6 +1,66 @@
-2025-12-17 20:01:58 Log wrapper init() ./logs/GBP_CHF.log
-2025-12-17 20:01:58 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
-2025-12-17 20:01:59 CandleManager() init last_candle:last_candle: 25-12-18 01:00 is_ready:False
-2025-12-17 20:02:09 CandleManager() new candle: last_candle: 25-12-18 01:01 is_ready:True
-2025-12-17 20:03:00 CandleManager() new candle: last_candle: 25-12-18 01:02 is_ready:True
-2025-12-17 20:04:02 CandleManager() new candle: last_candle: 25-12-18 01:03 is_ready:True
+2025-12-19 12:36:29 Log wrapper init() ./logs/GBP_CHF.log
+2025-12-19 12:36:29 {'n_ma': 20, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5}
+2025-12-19 12:36:31 CandleManager() init last_candle:last_candle: 25-12-19 17:35 is_ready:False
+2025-12-19 12:37:02 CandleManager() new candle: last_candle: 25-12-19 17:36 is_ready:True
+2025-12-19 12:37:02 tech_manager: max_rows: 40 candle_time:2025-12-19 17:36:00+00:00, ganularity:M1
+2025-12-19 12:37:03 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:32:00+00:00  1.06374  1.06372  0.0  0.0  0.00025  0.000104       0
+35  GBP_CHF 2025-12-19 17:33:00+00:00  1.06380  1.06376  0.0  0.0  0.00023  0.000037       0
+36  GBP_CHF 2025-12-19 17:34:00+00:00  1.06370  1.06380  0.0  0.0  0.00021  0.000131       0
+37  GBP_CHF 2025-12-19 17:35:00+00:00  1.06367  1.06371  0.0  0.0  0.00024  0.000158       0
+38  GBP_CHF 2025-12-19 17:36:00+00:00  1.06400  1.06368  0.0  0.0  0.00026  0.000171       0
+2025-12-19 12:38:06 CandleManager() new candle: last_candle: 25-12-19 17:37 is_ready:True
+2025-12-19 12:38:06 tech_manager: max_rows: 40 candle_time:2025-12-19 17:37:00+00:00, ganularity:M1
+2025-12-19 12:38:06 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:33:00+00:00  1.06380  1.06376  0.0  0.0  0.00023  0.000037       0
+35  GBP_CHF 2025-12-19 17:34:00+00:00  1.06370  1.06380  0.0  0.0  0.00021  0.000131       0
+36  GBP_CHF 2025-12-19 17:35:00+00:00  1.06367  1.06371  0.0  0.0  0.00024  0.000158       0
+37  GBP_CHF 2025-12-19 17:36:00+00:00  1.06400  1.06368  0.0  0.0  0.00026  0.000171       0
+38  GBP_CHF 2025-12-19 17:37:00+00:00  1.06395  1.06405  0.0  0.0  0.00026  0.000124       0
+2025-12-19 12:39:09 CandleManager() new candle: last_candle: 25-12-19 17:38 is_ready:True
+2025-12-19 12:39:10 tech_manager: max_rows: 40 candle_time:2025-12-19 17:38:00+00:00, ganularity:M1
+2025-12-19 12:39:10 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:34:00+00:00  1.06370  1.06380  0.0  0.0  0.00021  0.000131       0
+35  GBP_CHF 2025-12-19 17:35:00+00:00  1.06367  1.06371  0.0  0.0  0.00024  0.000158       0
+36  GBP_CHF 2025-12-19 17:36:00+00:00  1.06400  1.06368  0.0  0.0  0.00026  0.000171       0
+37  GBP_CHF 2025-12-19 17:37:00+00:00  1.06395  1.06405  0.0  0.0  0.00026  0.000124       0
+38  GBP_CHF 2025-12-19 17:38:00+00:00  1.06394  1.06394  0.0  0.0  0.00024  0.000114       0
+2025-12-19 12:40:04 CandleManager() new candle: last_candle: 25-12-19 17:39 is_ready:True
+2025-12-19 12:40:04 tech_manager: max_rows: 40 candle_time:2025-12-19 17:39:00+00:00, ganularity:M1
+2025-12-19 12:40:04 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:35:00+00:00  1.06367  1.06371  0.0  0.0  0.00024  0.000158       0
+35  GBP_CHF 2025-12-19 17:36:00+00:00  1.06400  1.06368  0.0  0.0  0.00026  0.000171       0
+36  GBP_CHF 2025-12-19 17:37:00+00:00  1.06395  1.06405  0.0  0.0  0.00026  0.000124       0
+37  GBP_CHF 2025-12-19 17:38:00+00:00  1.06394  1.06394  0.0  0.0  0.00024  0.000114       0
+38  GBP_CHF 2025-12-19 17:39:00+00:00  1.06396  1.06393  0.0  0.0  0.00024  0.000135       0
+2025-12-19 12:41:07 CandleManager() new candle: last_candle: 25-12-19 17:40 is_ready:True
+2025-12-19 12:41:08 tech_manager: max_rows: 40 candle_time:2025-12-19 17:40:00+00:00, ganularity:M1
+2025-12-19 12:41:08 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:36:00+00:00  1.06400  1.06368  0.0  0.0  0.00026  0.000171       0
+35  GBP_CHF 2025-12-19 17:37:00+00:00  1.06395  1.06405  0.0  0.0  0.00026  0.000124       0
+36  GBP_CHF 2025-12-19 17:38:00+00:00  1.06394  1.06394  0.0  0.0  0.00024  0.000114       0
+37  GBP_CHF 2025-12-19 17:39:00+00:00  1.06396  1.06393  0.0  0.0  0.00024  0.000135       0
+38  GBP_CHF 2025-12-19 17:40:00+00:00  1.06384  1.06394  0.0  0.0  0.00026  0.000014       0
+2025-12-19 12:42:01 CandleManager() new candle: last_candle: 25-12-19 17:41 is_ready:True
+2025-12-19 12:42:01 tech_manager: max_rows: 40 candle_time:2025-12-19 17:41:00+00:00, ganularity:M1
+2025-12-19 12:42:01 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:37:00+00:00  1.06395  1.06405  0.0  0.0  0.00026  0.000124       0
+35  GBP_CHF 2025-12-19 17:38:00+00:00  1.06394  1.06394  0.0  0.0  0.00024  0.000114       0
+36  GBP_CHF 2025-12-19 17:39:00+00:00  1.06396  1.06393  0.0  0.0  0.00024  0.000135       0
+37  GBP_CHF 2025-12-19 17:40:00+00:00  1.06384  1.06394  0.0  0.0  0.00026  0.000014       0
+38  GBP_CHF 2025-12-19 17:41:00+00:00  1.06375  1.06382  0.0  0.0  0.00026  0.000074       0
+2025-12-19 12:43:05 CandleManager() new candle: last_candle: 25-12-19 17:42 is_ready:True
+2025-12-19 12:43:06 tech_manager: max_rows: 40 candle_time:2025-12-19 17:42:00+00:00, ganularity:M1
+2025-12-19 12:43:06 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN  SIGNAL
+34  GBP_CHF 2025-12-19 17:38:00+00:00  1.06394  1.06394  0.0  0.0  0.00024  0.000114       0
+35  GBP_CHF 2025-12-19 17:39:00+00:00  1.06396  1.06393  0.0  0.0  0.00024  0.000135       0
+36  GBP_CHF 2025-12-19 17:40:00+00:00  1.06384  1.06394  0.0  0.0  0.00026  0.000014       0
+37  GBP_CHF 2025-12-19 17:41:00+00:00  1.06375  1.06382  0.0  0.0  0.00026  0.000074       0
+38  GBP_CHF 2025-12-19 17:42:00+00:00  1.06387  1.06380  0.0  0.0  0.00022  0.000046       0
