@@ -12,5 +12,6 @@ if __name__ == "__main__":
     oanda_api = OandaApi()
 
     instrumentCollection.load_instruments("./data")
-    dd = oanda_api.last_complete_candle("EUR_USD", granularity="M5")
-    print(CandleTiming(dd))
+    # dd = oanda_api.last_complete_candle("EUR_USD", granularity="M5")
+    # print(CandleTiming(dd))
+    print(oanda_api.get_prices(["GBP_USD", "EUR_USD"]))

@@ -1,5 +1,6 @@
 import pandas as pd
 
+from models.trade_decision import TradeDecision
 from technical.indicators import BollingerBands 
 
 
@@ -78,6 +79,7 @@ def get_trade_decision(candle_time, pair, granularity, api: OandaApi,
         last_row = process_candles(df, pair, trade_settings, log_message)
         if last_row.SIGNAL != defs.NONE:
             log_message(f"SIGNAL: {last_row}\n", pair)
+            return TradeDecision(last_row)
 
     return None
 
