@@ -14,7 +14,7 @@ def trade_is_open(pair, api: OandaApi):
         
     return None 
 
-def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error):
+def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk):
     open_trade = trade_is_open(trade_decision.pair, api)
 
     if open_trade is not None:
