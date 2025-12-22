@@ -5,6 +5,7 @@ import json
 from dateutil import parser 
 from datetime import datetime as dt 
 from infrastructure.instrument_collection import instrumentCollection as ic
+from models.api_price import ApiPrice
 from models.open_trade import OpenTrade 
 
 
@@ -115,6 +116,12 @@ class OandaApi:
         df = pd.DataFrame.from_dict(final_data)
         return df
     
+    def last_complete_candle(self, pair_name, granularity):
+        df = self.get_candles_df(pair_name, granularity=granularity, count=10)
+        if df.shape[0] == 0:
+            return None 
+        return df.iloc[-1].time
+    
     
     def place_trade(self, pair_name: str, units:float, direction: int,
                     stop_loss: float=None, take_profit: float=None):
@@ -184,3 +191,15 @@ class OandaApi:
             return [OpenTrade(x) for x in response["trades"]]
         else: 
             print("you have no open trades at the moment")
+
+    def get_prices(self, instruments_list):
+        url = f"accounts/{config("ACCOUNT_ID")}/pricing"
+        params = dict(
+            instruments=",".join(instruments_list),
+            includeHomeConversions = True
+        )
+        ok, response = self.make_request(url, params=params)
+
+        if ok == True and "prices" in response and "homeConversions" in response:
+            return [ApiPrice(x, response["homeConversions"]) for x in response["prices"]]
+        return None

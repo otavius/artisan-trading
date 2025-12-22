@@ -1,11 +1,14 @@
 import pandas as pd 
 
-def BollingerBands(df: pd.DataFrame, n = 20, s= 2):
+def BollingerBands(df: pd.DataFrame, window:int, n_std:float):
+    if not isinstance(window, int) or window <= 0:
+        raise ValueError(f"Bollinger n must be a positive int, got {window}")
+
     typical_price = (df.mid_c + df.mid_h + df.mid_l) / 3 
-    stddev = typical_price.rolling(window=n).std()
-    df["BB_MA"] = typical_price.rolling(window=n).mean()
-    df["BB_UP"] = df["BB_MA"] + stddev * s
-    df["BB_LW"] = df["BB_MA"] - stddev * s
+    stddev = typical_price.rolling(window=window).std()
+    df["BB_MA"] = typical_price.rolling(window=window).mean()
+    df["BB_UP"] = df["BB_MA"] + stddev * n_std
+    df["BB_LW"] = df["BB_MA"] - stddev * n_std
     return df
 
 def ATR(df: pd.DataFrame, n=14):
