@@ -19,4 +19,7 @@ if __name__ == "__main__":
     # dd = oanda_api.last_complete_candle("EUR_USD", granularity="M5")
     # print(CandleTiming(dd))
     #print(oanda_api.get_prices(["GBP_USD", "EUR_USD"]))
-    print(get_trade_units(oanda_api, "AUD_NZD", defs.BUY, 0.005, 30, lm))
+    print("AUD_NZD",get_trade_units(oanda_api, "AUD_NZD", defs.BUY, 0.005, 30, lm))
+    print("GBP_JPY",get_trade_units(oanda_api, "GBP_JPY", defs.BUY, 0.05, 30, lm))
+    print("USD_CAD",get_trade_units(oanda_api, "USD_CAD", defs.BUY, 0.005, 30, lm))
+    #print(oanda_api.get_prices(["GBP_JPY"]))
