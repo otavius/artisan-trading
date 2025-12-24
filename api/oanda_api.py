@@ -7,6 +7,7 @@ from datetime import datetime as dt
 from infrastructure.instrument_collection import instrumentCollection as ic
 from models.api_price import ApiPrice
 from models.open_trade import OpenTrade 
+import defs.constants as defs
 
 
 
@@ -14,10 +15,8 @@ class OandaApi:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {config("OANDA_API_KEY")}",
-            "Content-Type": "application/json"
-        })
+        self.session.headers.update(defs.SECURE_HEADER)
+      
 
     def make_request(self, url, verb="get", code=200, params=None, data=None, headers=None):
         full_url = f"{config("OANDA_URL")}/{url}"
