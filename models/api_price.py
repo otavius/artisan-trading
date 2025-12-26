@@ -12,12 +12,13 @@
 #         return f"ApiPrice {self.instrument} {self.ask} {self.bid} {self.sell_conv:.6f} {self.buy_conv:.6f}"
 
 
-class ApiPrice:
+from models.base_api_price import BaseApiPrice
+
+
+class ApiPrice(BaseApiPrice):
 
     def __init__(self, api_object, homeConversions):
-        self.instrument = api_object["instrument"]
-        self.ask = float(api_object["asks"][0]["price"])
-        self.bid = float(api_object["bids"][0]["price"])
+        super().__init__(api_object)
 
         base_instrument = self.instrument.split("_")[1]
         for hc in homeConversions:
