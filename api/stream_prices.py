@@ -28,11 +28,16 @@ class PriceStreamer(threading.Thread):
         if self.price_events[instrument].is_set() == False:
             self.price_events[instrument].set()
 
+
+    def fire_new_price_event(self, instrument):
+        if self.price_events[instrument].is_set() == False:
+            self.price_events[instrument].set()
+
     def update_live_price(self, live_price: LiveApiPrice):
         try:
             self.price_lock.acquire()
             self.shared_prices[live_price.instrument] = live_price
-            self.fire_new_price_event
+            self.fire_new_price_event(live_price.instrument)
         except Exception as error: 
             self.log.logger.error(f"Exception: {error}")
         finally:
