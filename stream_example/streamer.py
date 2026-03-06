@@ -1,8 +1,11 @@
 import json 
+from queue import Queue
 import threading
 import time
 
 from stream_example.stream_prices import PriceStreamer
+from stream_example.stream_processor import PriceProcessor
+from stream_example.stream_worker import WorkProcessor
 
 def load_settings():
     with open("./bot/settings.json", "r") as f:
@@ -18,9 +21,9 @@ def run_streamer():
     settings = load_settings()
 
     shared_prices = {}
-
     shared_prices_events = {}
     shared_prices_lock = threading.Lock()
+    work_queue = Queue()
 
     for p in settings["pairs"].keys():
         shared_prices_events[p] = threading.Event()
@@ -33,6 +36,19 @@ def run_streamer():
     threads.append(price_stream_t)
     price_stream_t.start()
 
+    worker_t = WorkProcessor(work_queue)
+    worker_t.daemon = True
+    threads.append(worker_t)
+    worker_t.start()
+
+
+    for p in settings["pairs"].keys():
+        processing_thread = PriceProcessor(shared_prices, shared_prices_lock, shared_prices_events, f"PriceProcessor_{p}", p, work_queue)
+        processing_thread.daemon = True
+        threads.append(processing_thread)
+        processing_thread.start()
+
+
     try:
         for t in threads:
             t.join()
@@ -40,3 +56,4 @@ def run_streamer():
         print("KeyboardInterrupt")
 
     print("ALL DONE")
+
