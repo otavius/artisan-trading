@@ -1,0 +1,32 @@
+
+
+import json
+
+from models.trade_settings import TradeSettings
+
+
+class TradeSettingsCollection:
+
+    FILENAME = "settings.json"
+
+    def __init__(self):
+        self.trade_settings_dict = {}
+        self.granularity = "M1"
+        self.trade_risk = 1.0 
+
+    def load_trade_settings(self):
+        self.trade_settings_dict = {}
+        filename = f"./stream_bot/{self.FILENAME}"
+        with open(filename, "r") as f:
+            data = json.loads(f.read())
+            self.granularity = data["granularity"]
+            self.trade_risk = data["trade_risk"]
+            for pair, pair_settings in data["pairs"].items():
+                self.trade_settings_dict[pair] = TradeSettings(pair_settings, pair)
+
+    def print_collection(self):
+        print(f"Granularity: {self.granularity}")
+        print(f"Trade Risk: {self.trade_risk}")
+        [print(f"{k} : {v}") for k, v in self.trade_settings_dict.items()]
+
+tradeSettingCollection = TradeSettingsCollection()
