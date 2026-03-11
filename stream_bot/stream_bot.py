@@ -1,8 +1,10 @@
 import threading
 import time
 
+from stream_bot.price_processer import PriceProcessor
 from stream_bot.trade_settings_collection import tradeSettingCollection
 from stream_example.stream_prices import PriceStreamer
+
 
 def run_bot():
     tradeSettingCollection.load_trade_settings()
@@ -18,10 +20,16 @@ def run_bot():
 
     threads = []
 
+    
     price_stream_t = PriceStreamer(shared_prices, shared_prices_lock, shared_prices_events)
     price_stream_t.daemon = True
     threads.append(price_stream_t)
     price_stream_t.start()
+
+    for p in tradeSettingCollection.pair_list():
+        processing_t = PriceProcessor(shared_prices, shared_prices_lock, shared_prices_events,f"PriceProcessor_{p}", p, tradeSettingCollection.granularity)
+        processing_t.daemon = True 
+        processing_t.start()
 
     try:
         while True:
