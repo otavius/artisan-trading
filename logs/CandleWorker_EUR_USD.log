@@ -1,0 +1,2 @@
+2026-03-13 10:24:36 Log wrapper init() ./logs/CandleWorker_EUR_USD.log
+2026-03-13 10:24:36 Created CandleWorker for EUR_USD {'n_ma': 20, 'n_std': 2.0, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5, 'pair': 'EUR_USD'}

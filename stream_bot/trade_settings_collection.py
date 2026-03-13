@@ -31,5 +31,8 @@ class TradeSettingsCollection:
 
     def pair_list(self)-> list:
         return list(self.trade_settings_dict.keys())
+    
+    def get_trade_settings(self, pair: str) -> TradeSettings:
+        return self.trade_settings_dict[pair]
 
 tradeSettingCollection = TradeSettingsCollection()
