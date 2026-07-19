@@ -11,11 +11,14 @@ def db_tests():
     print(d.query_distinct(DataDB.SAMPLE_COLL, 'age'))
 
 if __name__ == "__main__":
-    # oanda_api = OandaApi()
+    oanda_api = OandaApi()
+    #instrumentCollection.create_db(oanda_api.get_account_instruments())
+    instrumentCollection.load_instrumentsDB()
+    print(instrumentCollection.instruments_dict)
     # instrumentCollection.load_instruments("./data")
     # run_streamer()
-    d = DataDB()
+    #d = DataDB()
     #d.test_connect()
-    db_tests()
+    #db_tests()
 
 

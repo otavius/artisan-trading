@@ -4,6 +4,8 @@ from decouple import config
 class DataDB:
 
     SAMPLE_COLL = "forex_sample"
+    CALANDER_COLL = "forex_calander"
+    INSTRUMENT_COLL = "forex_instruments"
 
     def __init__(self):
         self.client = MongoClient(config("MONGO_CONN_STR"))
@@ -49,3 +51,9 @@ class DataDB:
             return data
         except errors.InvalidOperation as error:
             print(f"query_all: {error} ")
+
+    def delete_many(self, collection, **kwargs):
+        try:
+            _ = self.db[collection].delete_many(kwargs)
+        except errors.InvalidOperation as error:
+            print(f"delete_many erorr: {error}")
