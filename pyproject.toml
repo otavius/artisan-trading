@@ -18,6 +18,8 @@ yfinance = "^0.2.66"
 ta-lib = "^0.6.8"
 beautifulsoup4 = "^4.14.3"
 cloudscraper = "^1.2.71"
+numpy = "^2.5.1"
+pymongo = {version = "3.12", extras = ["srv"]}
 
 
 [tool.poetry.group.dev.dependencies]
