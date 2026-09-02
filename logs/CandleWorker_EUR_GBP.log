@@ -1,2 +1,9 @@
-2026-07-18 15:35:03 Log wrapper init() ./logs/CandleWorker_EUR_GBP.log
-2026-07-18 15:35:03 Created CandleWorker for EUR_GBP {'n_ma': 20, 'n_std': 2.0, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5, 'pair': 'EUR_GBP'}
+2026-09-02 03:31:19 Log wrapper init() ./logs/CandleWorker_EUR_GBP.log
+2026-09-02 03:31:19 Created CandleWorker for EUR_GBP {'n_ma': 20, 'n_std': 2.0, 'maxspread': 0.0004, 'mingain': 0.0014, 'riskreward': 1.5, 'pair': 'EUR_GBP'}
+2026-09-02 03:32:02 process_candles:
+       PAIR                      time    mid_c    mid_o   SL   TP   SPREAD      GAIN     LOSS  SIGNAL
+44  EUR_GBP 2026-09-02 07:27:00+00:00  0.85704  0.85694  0.0  0.0  0.00013  0.000114  0.85704       0
+45  EUR_GBP 2026-09-02 07:28:00+00:00  0.85704  0.85702  0.0  0.0  0.00012  0.000098  0.85704       0
+46  EUR_GBP 2026-09-02 07:29:00+00:00  0.85706  0.85704  0.0  0.0  0.00013  0.000061  0.85706       0
+47  EUR_GBP 2026-09-02 07:30:00+00:00  0.85698  0.85706  0.0  0.0  0.00015  0.000121  0.85698       0
+48  EUR_GBP 2026-09-02 07:31:00+00:00  0.85692  0.85698  0.0  0.0  0.00014  0.000162  0.85692       0
