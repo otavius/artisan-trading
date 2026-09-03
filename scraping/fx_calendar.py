@@ -1,5 +1,6 @@
 import time
-
+import random
+from db.db import DataDB
 from scraping.utils import get_soup_file, get_soup_from_url
 from dateutil.parser import parse
 import pandas as pd 
@@ -76,20 +77,22 @@ def fx_calendar():
     final_data = []
 
     start = parse("2026-03-22T00:00:00Z")
-    end = parse("2026-04-22T00:00:00Z")
-
+    end = parse("2026-07-18T00:00:00Z")
+    
+    database = DataDB()
     while start<end:
-        print(start)
-        final_data += get_fx_calendar(start)
+        data = get_fx_calendar(start)
+        print(start, len(data))
+        database.add_many(DataDB.CALANDER_COLL, data)
         start = start + dt.timedelta(days=7)
-        time.sleep(1)
+        time.sleep(random.randint(1,4))
+
+
 
     df_cal = pd.DataFrame.from_dict(final_data)
     df_cal.drop_duplicates(
         subset=["date", "country", "event"],
         inplace=True
     )
-    print(df_cal.head())
-    print(df_cal.tail())
 
 
