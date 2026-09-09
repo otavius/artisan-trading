@@ -68,6 +68,6 @@ class Bot:
             try:
                 self.process_candles(self.candle_manager.update_timings())
             except Exception as error:
-                self.log_to_error("Creash: {error}")
+                self.log_to_error("Crash: {error}")
                 break 
             

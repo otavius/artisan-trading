@@ -1,5 +1,6 @@
 import json
 import threading
+import time
 import requests
 import pandas as pd 
 from timeit import default_timer as timer 
@@ -44,25 +45,67 @@ class PriceStreamer(StreamBase):
         self.log_message("")
         self.log_message(f"\n{pd.DataFrame.from_dict([v.get_dict() for _, v in self.shared_prices.items()])}")
 
+    # def run(self):
+
+    #     start = timer() - PriceStreamer.LOG_FREQ + 10 
+
+    #     params = dict(
+    #         instruments=",".join(self.pairs_list)
+    #     )
+
+    #     url = f"{STREAM_URL}/accounts/{config("ACCOUNT_ID")}/pricing/stream"
+
+    #     response = requests.get(url, params=params, headers=defs.SECURE_HEADER, stream=True)
+
+    #     for price in response.iter_lines():
+    #         if price:
+    #             decoded_price = json.loads(price.decode('utf-8'))
+    #             if "type" in decoded_price and  decoded_price["type"] == "PRICE":
+    #                 self.update_live_price(LiveApiPrice(decoded_price))
+    #                # print(LiveApiPrice(decoded_price).get_dict())
+    #                 if timer() - start > PriceStreamer.LOG_FREQ:
+
+    #                     self.log_data()
+    #                     start = timer() 
+
     def run(self):
-
         start = timer() - PriceStreamer.LOG_FREQ + 10 
-
-        params = dict(
-            instruments=",".join(self.pairs_list)
-        )
-
+        params = dict(instruments=",".join(self.pairs_list))
         url = f"{STREAM_URL}/accounts/{config("ACCOUNT_ID")}/pricing/stream"
 
-        response = requests.get(url, params=params, headers=defs.SECURE_HEADER, stream=True)
+        while True: 
+            try:
+                response = requests.get(
+                    url, 
+                    params=params,
+                    headers=defs.SECURE_HEADER,
+                    stream=True,
+                    timeout=(10, 60)
+                )
+                response.raise_for_status()
 
-        for price in response.iter_lines():
-            if price:
-                decoded_price = json.loads(price.decode('utf-8'))
-                if "type" in decoded_price and  decoded_price["type"] == "PRICE":
-                    self.update_live_price(LiveApiPrice(decoded_price))
-                   # print(LiveApiPrice(decoded_price).get_dict())
-                    if timer() - start > PriceStreamer.LOG_FREQ:
+                for price in response.iter_lines():
+                    if price:
+                        decoded_price = json.loads(price.decode('utf-8'))
 
-                        self.log_data()
-                        start = timer() 
+                        if decoded_price.get("type") == "PRICE":
+                            self.update_live_price(LiveApiPrice(decoded_price))
+                            if timer() - start > PriceStreamer.LOG_FREQ:
+                                self.log_data()
+                                start = timer()
+
+                            # HEARTBEAT message fall through here 
+            except (requests.exceptions.ChunkedEncodingError,
+                    requests.exceptions.ConnectionError,
+                    requests.exceptions.ReadTimeout) as error:
+                self.log_message(f"Stream disconnected: {error}. Reconnecting...", error=True)
+                time.sleep(2)
+                continue
+            except requests.exceptions.HTTPError as error:
+                self.log_message(f"HTTP error from OANDA: {error}", error=True)
+                time.sleep(5)
+                continue
+            except Exception as error:
+                self.log_message(f"Unexpected stream error: {error}", error=True)
+                time.sleep(5)
+                continue
