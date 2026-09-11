@@ -35,5 +35,13 @@
         "maxspread": 0.0004,
         "mingain": 0.0014,
         "riskreward": 1.5
-    }}
+    },
+    "USD_CAD":{
+        "n_ma": 20,
+        "n_std": 2.0,
+        "maxspread": 0.0010,
+        "mingain": 0.0500,
+        "riskreward": 2
+    }
+}
 }

@@ -24,7 +24,7 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
     
     trade_units = get_trade_units(api, trade_decision.pair, trade_decision.signal, trade_decision.loss, trade_risk, log_message)
 
-    trade_id = api.place_trade(
+    trade_id, reject_reason = api.place_trade(
         trade_decision.pair,
         trade_units, 
         trade_decision.signal,
@@ -32,9 +32,16 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
         trade_decision.tp
     )
 
-    if trade_id is not None:
-        log_error(f"ERROR placing {trade_decision}")
-        log_message(f"Error placing {trade_decision}", trade_decision.pair)
-    else:
-        log_message(f"placed trade_id {trade_id} for {trade_decision}", trade_decision.pair)
+    # if trade_id is not None:
+    #     log_error(f"ERROR placing {trade_decision}")
+    #     log_message(f"Error placing {trade_decision}", trade_decision.pair)
+    # else:
+    #     log_message(f"placed trade_id {trade_id} for {trade_decision}", trade_decision.pair)
+    #     print(f"placed trade_id: {trade_id} for {trade_decision}")
+    if trade_id is not None: 
+        log_message(f"placed trade_id {trade_id} for {trade_decision}")
         print(f"placed trade_id: {trade_id} for {trade_decision}")
+    else: 
+        log_error(f"ERROR placing {trade_decision}")
+        log_message(f"Error placing {trade_decision} for {trade_decision.pair}", error=True)
+        log_error(f"ERROR placing {trade_decision}: {reject_reason}")

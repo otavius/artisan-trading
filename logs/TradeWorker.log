@@ -1,1 +1,5 @@
-2026-09-09 18:33:40 Log wrapper init() ./logs/TradeWorker.log
+2026-09-10 15:20:43 Log wrapper init() ./logs/TradeWorker.log
+2026-09-11 03:00:01 TradeWorker: <models.trade_decision.TradeDecision object at 0x00000217A8231550>
+2026-09-11 03:00:03 get_trade_units() price ApiPrice GBP_CHF 1.10019 1.09979 1.229506 1.229506
+2026-09-11 03:00:03 0.0001 10.622222222222977 1.882845188284385 15313.8
+2026-09-11 03:00:08 placed trade_id None for <models.trade_decision.TradeDecision object at 0x00000217A8231550>

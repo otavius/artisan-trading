@@ -1,0 +1,2 @@
+2026-09-10 15:20:43 Log wrapper init() ./logs/CandleWorker_USD_CAD.log
+2026-09-10 15:20:43 Created CandleWorker for USD_CAD {'n_ma': 20, 'n_std': 2.0, 'maxspread': 0.001, 'mingain': 0.05, 'riskreward': 2, 'pair': 'USD_CAD'}

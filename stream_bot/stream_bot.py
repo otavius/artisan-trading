@@ -13,6 +13,7 @@ def run_bot():
     tradeSettingCollection.load_trade_settings()
     tradeSettingCollection.print_collection()
 
+
     shared_prices = {}
     shared_prices_events = {}
     shared_prices_lock = threading.Lock()
